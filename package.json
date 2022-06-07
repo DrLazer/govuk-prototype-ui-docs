@@ -1,0 +1,28 @@
+{
+  "name": "gov-prototype-x",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=17.0.0 <18.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "body-parser": "1.19.2",
+    "express": "4.17.1",
+    "express-session": "^1.17.2",
+    "govuk-frontend": "4.0.1",
+    "memorystore": "^1.6.7",
+    "nunjucks": "3.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "nodemon": "^2.0.15"
+  }
+}

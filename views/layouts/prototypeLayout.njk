@@ -1,0 +1,81 @@
+{% from "../macros/validation-summary.njk" import validationSummary %}
+{% from "../macros/phase-button.njk" import phaseButton %}
+
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/govuk-frontend-4.0.1.min.css" />
+  <script src="/govuk-frontend-4.0.1.min.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+  GOV.UK Prototype UI - Docs
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% block content %}
+  {% block backLink %}
+  {% endblock %}
+
+  {% block preForm %}
+  {% endblock %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            {{validationSummary(data)}}
+
+            {% block form %}
+            {% endblock %}
+
+          </fieldset>
+        </div>
+        {% block formButton %}
+          {{ phaseButton(data) }}
+        {% endblock %}
+      </form>
+    </div>
+  </div>
+
+  {% block postForm %}
+  {% endblock %}
+{% endblock %}
+
+{% if useAutoStoreData %}
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "/survey",
+            text: "Survey"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}
+{% endif %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <script>
+      window.GOVUKFrontend.initAll();
+    </script>
+    {# {% include "includes/scripts.html" %} #}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
